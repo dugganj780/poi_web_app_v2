@@ -1,0 +1,37 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <form class="uk-form-stacked uk-text-left" action="/createPoi" method="POST">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Add New Point of Interest</label>
+                    <div class="uk-margin">
+                        <input class="uk-input" id="form-stacked-text" type="text" name="name" placeholder="Name" />
+                    </div>
+                    <div class="uk-margin">
+                        <select class="uk-select" name="category">
+                            <option>National Monument</option>
+                            <option>Mountain</option>
+                            <option>Forest</option>
+                            <option>Island</option>
+                        </select>
+                    </div>
+                    <div class = "uk-margin">
+                        <textarea class="uk-textarea" rows="5" name="description" placeholder="Description" ></textarea>
+                    </div>
+                    <div class ="uk-margin">
+                        <input class="uk-input" id="form-stacked-text" type="number" name="lat" placeholder="Latitude" />
+                    </div>
+                    <div class ="uk-margin">
+                        <input class="uk-input" id="form-stacked-text" type="number" name="long" placeholder="Longitude" />
+                    </div>
+                    <div class="uk-margin">
+
+                        <input class="uk-input uk-form-width-small" type="number" min="1" max="5" name="rating" placeholder="Rating">
+                    </div>
+                    <div class="uk-margin" uk-margin>
+                </div>
+            <div class=" uk-width-1-2@m">
+                <div class="uk-margin">
+                    <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add</button>
+                </div>
+            </div>
+    </form>
+</div>
