@@ -6,13 +6,20 @@
         <thead>
         <th>Name</th>
         <th>Email</th>
+        <th>Account Type</th>
         <th>Remove</th>
         </thead>
         <tbody class="uk-text-left">
-        {{#each user}}
+        {{#each users}}
             <tr>
                 <td> {{firstName}} {{lastName}} </td>
                 <td> {{email}} </td>
+                {{#if isAdmin}}
+                    <td>Administrator</td>
+                {{else}}
+                    <td>Customer</td>
+                {{/if}}
+                <td><button class= "uk-button" >Delete</button> </td>
             </tr>
         {{/each}}
         </tbody>
