@@ -18,7 +18,7 @@ module.exports = [
     { method: 'POST', path: '/createPoi', config: Pois.createPoi },
     { method: 'GET', path: '/addpoi', config: Pois.addpoi },
     { method: "GET", path: "/report", config: Pois.report },
-    { method: "GET", path: "/poiview", config: Pois.singlePoi },
+    { method: "GET", path: "/poiview/{_id}", config: Pois.singlePoi },
 
     {
         method: "GET",

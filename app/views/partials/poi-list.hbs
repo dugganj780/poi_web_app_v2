@@ -1,21 +1,48 @@
-<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-    <table class="uk-table">
-        <caption>
-            POIs
-        </caption>
-        <thead>
-        <th>Name</th>
-        <th>Item</th>
-        <th>View POI</th>
-        </thead>
-        <tbody class="uk-text-left">
-        {{#each pois}}
-            <tr>
-                <td>{{name}}</td>
-                <td> {{user.firstName}} {{user.lastName}} </td>
-                <td> <button class="uk-button uk-button-primary"> <a href="/poiview"> Primary </a></button> </td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+<div class="uk-child-width-expand@s uk-text-left" uk-grid>
+    <div class="uk-margin uk-card uk-card-default uk-card-body">
+    <ul uk-accordion>
+        <li>
+            <a class="uk-accordion-title" href="#">Mountains</a>
+            <div class="uk-accordion-content">
+                <table class="uk-table">
+                    <thead>
+                    <th>Name</th>
+                    <th>Item</th>
+                    <th>View POI</th>
+                    </thead>
+                    <tbody class="uk-text-left">
+                    {{#each mountains}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td> {{user.firstName}} {{user.lastName}} </td>
+                            <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <a class="uk-accordion-title" href="#">National Monuments</a>
+            <div class="uk-accordion-content">
+                <table class="uk-table">
+                    <thead>
+                    <th>Name</th>
+                    <th>Item</th>
+                    <th>View POI</th>
+                    </thead>
+                    <tbody class="uk-text-left">
+                    {{#each natMons}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td> {{user.firstName}} {{user.lastName}} </td>
+                            <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
+    </div>
 </div>

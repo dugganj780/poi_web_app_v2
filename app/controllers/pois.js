@@ -31,8 +31,9 @@ const Pois = {
         handler: async function (request, h) {
             const userId = request.auth.credentials.id;
             const user = await User.findById(userId).lean();
-            const id = request.auth.credentials.id;
-            const poi = await Poi.findById(id).lean();
+            const id = request.params._id;
+            const poi = await Poi.findById(id).populate("user").lean();
+            console.log(id);
             return h.view("poiview", {
                 title: "POI",
                 poi: poi,
@@ -40,7 +41,7 @@ const Pois = {
             });
         },
     },
-    report: {
+    /*report: {
         handler: async function (request, h) {
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
@@ -49,6 +50,26 @@ const Pois = {
                 title: "Points of Interest",
                 pois: pois,
                 user: user,
+            });
+        },
+    },*/
+    report: {
+        handler: async function (request, h) {
+            const id = request.auth.credentials.id;
+            const user = await User.findById(id).lean();
+            const pois = await Poi.find().populate("user").lean();
+            const mountains = await Poi.find({category: "Mountain"}, function (err, doc){}).populate("user").lean();
+            const natMons = await Poi.find({category: "National Monument"}, function (err, doc){}).populate("user").lean();
+            const forests = await Poi.find({category: "Forest"}, function (err, doc){}).populate("user").lean();
+            const islands = await Poi.find({category: "Island"}, function (err, doc){}).populate("user").lean();
+            return h.view("report", {
+                title: "Points of Interest",
+                pois: pois,
+                user: user,
+                natMons: natMons,
+                mountains: mountains,
+                forests: forests,
+                islands: islands,
             });
         },
     },
