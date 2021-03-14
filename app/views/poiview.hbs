@@ -1,7 +1,6 @@
 {{>inner-menu}}
-<div class="uk-background-cover uk-height-medium " datasrc="public/images/cobh.jpg" );">
-<div class="uk-child-width-expand@s uk-text-left" uk-grid>
-
+<div class="uk-margin uk-margin-left uk-margin-right">
+<div class="uk-child-width-expand@s uk-text-left" uk-grid uk-height-match="target: > div > .uk-card">
     <div>
         <div class="uk-card uk-card-default uk-card-body">
             <dl class="uk-description-list uk-description-list-divider">
@@ -18,10 +17,27 @@
                 <dt>Rating</dt>
                 <dd>{{poi.rating}}</dd>
             </dl>
+            {{>addimage}}
         </div>
     </div>
     <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
+        <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-position-centre uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                {{#each slideshow}}
+                <ul class="uk-slideshow-items">
+                    <li>
+                        <img src="{{url}}" alt="">
+                    </li>
+                </ul>
+                {{/each}}
+                <a class="uk-position-left uk-position-large" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-position-right uk-position-large" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+            </div>
+
+
+
+        </div>
     </div>
 </div>
 </div>

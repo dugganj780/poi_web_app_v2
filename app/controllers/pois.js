@@ -1,13 +1,17 @@
 "use strict";
 const Poi = require("../models/poi");
 const User = require("../models/user");
+const ImageStore = require('../models/image-store');
+let currentPoi = undefined;
+
 
 const Pois = {
     home: {
         handler: async function (request, h) {
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
-            const pois = await Poi.find({user: user}, function (err, doc){}).populate("user").lean();
+            console.log(user);
+            const pois = await Poi.find({user: user._id}, function (err, doc){}).populate("user").lean();
             return h.view("home", {
                 title: "My Points of Interest",
                 pois: pois,
@@ -32,12 +36,14 @@ const Pois = {
             const userId = request.auth.credentials.id;
             const user = await User.findById(userId).lean();
             const id = request.params._id;
-            const poi = await Poi.findById(id).populate("user").lean();
+            currentPoi = await Poi.findById(id).populate("user").lean();
+            const slideshow = await ImageStore.getPOIImages(id);
             console.log(id);
             return h.view("poiview", {
                 title: "POI",
-                poi: poi,
+                poi: currentPoi,
                 user: user,
+                slideshow: slideshow,
             });
         },
     },
@@ -105,6 +111,31 @@ const Pois = {
                 return h.view("main", { errors: [{ message: err.message }] });
             }
         },
+    },
+    uploadFile: {
+        handler: async function(request, h) {
+            try {
+                const file = request.payload.imagefile;
+                const id = currentPoi._id;
+                /*const poi = await Poi.findById(id).populate("user").lean();*/
+                console.log(currentPoi);
+                if (Object.keys(file).length > 0) {
+                    await ImageStore.uploadImage(request.payload.imagefile,id);
+                    console.log(id);
+                    console.log("File Uploaded");
+                    return h.redirect("/report");
+                }
+                return h.redirect("/report");
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        payload: {
+            multipart: true,
+            output: 'data',
+            maxBytes: 209715200,
+            parse: true
+        }
     },
 };
 
