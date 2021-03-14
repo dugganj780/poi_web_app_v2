@@ -11,11 +11,19 @@ const Pois = {
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
             console.log(user);
-            const pois = await Poi.find({user: user._id}, function (err, doc){}).populate("user").lean();
+            const pois = await Poi.find({user: user}, function (err, doc){}).populate("user").lean();
+            const mountains = await Poi.find({category: "Mountain", user: user}, function (err, doc){}).populate("user").lean();
+            const natMons = await Poi.find({category: "National Monument", user: user}, function (err, doc){}).populate("user").lean();
+            const forests = await Poi.find({category: "Forest", user: user}, function (err, doc){}).populate("user").lean();
+            const islands = await Poi.find({category: "Island", user: user}, function (err, doc){}).populate("user").lean();
             return h.view("home", {
                 title: "My Points of Interest",
                 pois: pois,
                 user: user,
+                natMons: natMons,
+                mountains: mountains,
+                forests: forests,
+                islands: islands,
             });
         },
     },
