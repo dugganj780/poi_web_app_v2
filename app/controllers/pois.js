@@ -145,6 +145,40 @@ const Pois = {
             parse: true
         }
     },
+    updatePoi: {
+        handler: async function (request, h) {
+            try {
+                const poiEdit = request.payload;
+                const id = currentPoi._id;
+                const poi = await Poi.findById(id).populate("user");
+                poi.name = poiEdit.name;
+                console.log(poi)
+                poi.category = poiEdit.category;
+                poi.description = poiEdit.description;
+                poi.lat = poiEdit.lat;
+                poi.long = poiEdit.long;
+                poi.rating = poiEdit.rating;
+                console.log(poi)
+                await poi.save();
+                console.log(poi)
+                return h.redirect("/report");
+            }catch (err) {
+                return h.view("updatepoi", { errors: [{ message: err.message }] });
+            }
+        },
+    },
+    showPoiEdit: {
+        handler: async function(request, h) {
+            try {
+                const id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+                const poi = currentPoi;
+                return h.view("updatepoi", { title: "Update POI", user: user, poi: poi });
+            } catch (err) {
+                return h.view("report", { errors: [{ message: err.message }] });
+            }
+        }
+    },
 };
 
 module.exports = Pois;
