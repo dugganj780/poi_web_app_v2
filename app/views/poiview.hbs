@@ -16,8 +16,17 @@
                 <dd>{{poi.description}}</dd>
                 <dt>Rating</dt>
                 <dd>{{poi.rating}}</dd>
+                <dt>Upload Image</dt>
+                <dd>{{>addimage}}</dd>
+                {{#if user.isAdmin}}
+                <dd>
+                    <div class="uk-button-group">
+                        <button class="uk-button uk-button-secondary" ><a href ="/updatepoi">Edit</a></button>
+                        <button class="uk-button uk-button-secondary">Delete</button>
+                    </div>
+                </dd>
+                {{/if}}
             </dl>
-            {{>addimage}}
         </div>
     </div>
     <div>

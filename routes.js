@@ -20,6 +20,8 @@ module.exports = [
     { method: "GET", path: "/report", config: Pois.report },
     { method: "GET", path: "/poiview/{_id}", config: Pois.singlePoi },
     { method: "POST", path: "/uploadFile", config: Pois.uploadFile },
+    { method: "GET", path: "/updatepoi", config: Pois.showPoiEdit },
+    { method: "POST", path: "/updatepoi", config: Pois.updatePoi },
 
     {
         method: "GET",

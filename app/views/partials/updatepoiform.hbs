@@ -1,0 +1,35 @@
+<form class="uk-form-stacked uk-text-left" action="/updatepoi" method="POST">
+    <div class="uk-margin">
+        <h4>Add New Point of Interest</h4>
+        <div class="uk-margin">
+            <input class="uk-input" id="form-stacked-text" type="text" name="name" value={{poi.name}}>
+        </div>
+        <div class="uk-margin">
+            <select class="uk-select" name="category">
+                <option>National Monument</option>
+                <option>Mountain</option>
+                <option>Forest</option>
+                <option>Island</option>
+            </select>
+        </div>
+        <div class = "uk-margin">
+            <input class="uk-textarea" rows="5" name="description" value={{poi.description}}>
+        </div>
+        <div class ="uk-margin">
+            <input class="uk-input" id="form-stacked-text" type="number" name="lat" value={{poi.lat}}>
+        </div>
+        <div class ="uk-margin">
+            <input class="uk-input" id="form-stacked-text" type="number" name="long" value={{poi.long}}>
+        </div>
+        <div class="uk-margin">
+
+            <input class="uk-input uk-form-width-small" type="number" min="1" max="5" name="rating" value={{poi.rating}}>
+        </div>
+        <div class="uk-margin" uk-margin>
+        </div>
+        <div class=" uk-width-1-2@m">
+            <div class="uk-margin">
+                <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update</button>
+            </div>
+        </div>
+</form>
