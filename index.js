@@ -7,6 +7,7 @@ const Handlebars = require('handlebars');
 const Cookie = require("@hapi/cookie");
 const env = require('dotenv');
 const Joi = require("@hapi/joi");
+const ImageStore = require('./app/models/image-store');
 require('./app/models/db');
 
 env.config();
@@ -16,11 +17,18 @@ const server = Hapi.server({
     host: 'localhost',
 });
 
+const credentials = {
+    cloud_name: process.env.name,
+    api_key: process.env.key,
+    api_secret: process.env.secret
+};
+
 async function init() {
     await server.register(Inert);
     await server.register(Vision);
     await server.register(Cookie);
     server.validator(require("@hapi/joi"));
+    ImageStore.configure(credentials);
     server.views({
         engines: {
             hbs: require('handlebars'),
