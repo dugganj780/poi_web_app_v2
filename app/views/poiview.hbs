@@ -18,7 +18,7 @@
                 <dd>{{poi.rating}}</dd>
                 <dt>Upload Image</dt>
                 <dd>{{>addimage}}</dd>
-                {{#if user.isAdmin}}
+                {{#if isOwner}}
                 <dd>
                     <div class="uk-button-group">
                         <button class="uk-button uk-button-secondary" ><a href ="/updatepoi">Edit</a></button>
