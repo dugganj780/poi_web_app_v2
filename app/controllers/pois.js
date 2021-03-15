@@ -49,7 +49,6 @@ const Pois = {
             console.log(id);
             let isOwner = false;
             console.log(user._id)
-            console.log(currentPoi.user._id )
             if (user.isAdmin===true || user._id.toString() === currentPoi.user._id.toString() ){
                 isOwner = true;
             }

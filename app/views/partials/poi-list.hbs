@@ -1,19 +1,25 @@
-    <ul uk-accordion>
+<ul uk-accordion>
         <li>
             <a class="uk-accordion-title" href="#">Mountains</a>
             <div class="uk-accordion-content">
                 <table class="uk-table">
-                    <thead class="uk-text-centre">
-                    <th>Name</th>
-                    <th>Item</th>
+                    <thead>
+                    <tr>
+                    <th>Point of Interest</th>
+                    <th>Uploaded By</th>
                     <th>View POI</th>
+                    </tr>
                     </thead>
-                    <tbody class="uk-text-centre">
+                    <tbody class="uk-text-left">
                     {{#each mountains}}
                         <tr>
                             <td>{{name}}</td>
-                            <td> {{user.firstName}} {{user.lastName}} </td>
-                            <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
+                            {{#if user}}
+                                <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{else}}
+                                <td> Unknown User </td>
+                            {{/if}}
+                            <td> <button class="uk-button uk-button-secondary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
                         </tr>
                     {{/each}}
                     </tbody>
@@ -25,8 +31,8 @@
             <div class="uk-accordion-content">
                 <table class="uk-table">
                     <thead>
-                    <th>Name</th>
-                    <th>Item</th>
+                    <th>Point of Interest</th>
+                    <th>Uploaded By</th>
                     <th>View POI</th>
                     </thead>
                     <tbody class="uk-text-left">
@@ -34,7 +40,7 @@
                         <tr>
                             <td>{{name}}</td>
                             <td> {{user.firstName}} {{user.lastName}} </td>
-                            <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
+                            <td> <button class="uk-button uk-button-secondary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
                         </tr>
                     {{/each}}
                     </tbody>
@@ -46,16 +52,20 @@
             <div class="uk-accordion-content">
                 <table class="uk-table">
                     <thead>
-                    <th>Name</th>
-                    <th>Item</th>
+                    <th>Point of Interest</th>
+                    <th>Uploaded By</th>
                     <th>View POI</th>
                     </thead>
                     <tbody class="uk-text-left">
                     {{#each forests}}
                         <tr>
                             <td>{{name}}</td>
-                            <td> {{user.firstName}} {{user.lastName}} </td>
-                            <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
+                            {{#if user}}
+                                <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{else}}
+                                <td> Unknown User </td>
+                            {{/if}}
+                            <td> <button class="uk-button uk-button-secondary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
                         </tr>
                     {{/each}}
                     </tbody>
@@ -67,15 +77,19 @@
             <div class="uk-accordion-content">
                 <table class="uk-table">
                     <thead>
-                    <th>Name</th>
-                    <th>Item</th>
+                    <th>Point of Interest</th>
+                    <th>Uploaded By</th>
                     <th>View POI</th>
                     </thead>
                     <tbody class="uk-text-left">
                     {{#each islands}}
                         <tr>
                             <td>{{name}}</td>
-                            <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{#if user}}
+                                <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{else}}
+                                <td> Unknown User </td>
+                            {{/if}}
                             <td> <button class="uk-button uk-button-primary"> <a href="/poiview/{{_id}}"> Primary </a></button> </td>
                         </tr>
                     {{/each}}

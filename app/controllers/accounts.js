@@ -182,7 +182,7 @@ const Accounts = {
                     /*if(err) console.log(err);
                     console.log("Successful deletion");*/
                 });
-                return h.redirect("/home");
+                return h.redirect("/userview");
             }catch (err) {
                 return h.view("home", { errors: [{ message: err.message }] });
             }
