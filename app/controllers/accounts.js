@@ -172,6 +172,22 @@ const Accounts = {
             });
         },
     },
+    deleteUser: {
+        handler: async function (request, h) {
+            try {
+                const id = request.params._id;
+                console.log(id)
+                const user = await User.findById(id);
+                user.deleteOne({_id: id}, function(err){
+                    /*if(err) console.log(err);
+                    console.log("Successful deletion");*/
+                });
+                return h.redirect("/home");
+            }catch (err) {
+                return h.view("home", { errors: [{ message: err.message }] });
+            }
+        },
+    },
 };
 
 module.exports = Accounts;

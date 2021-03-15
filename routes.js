@@ -13,6 +13,7 @@ module.exports = [
     { method: "GET", path: "/settings", config: Accounts.showSettings },
     { method: "POST", path: "/settings", config: Accounts.updateSettings },
     { method: "GET", path: "/userview", config: Accounts.listUsers },
+    { method: "GET", path: "/deleteuser/{_id}", config: Accounts.deleteUser },
 
     { method: "GET", path: "/home", config: Pois.home },
     { method: 'POST', path: '/createPoi', config: Pois.createPoi },
