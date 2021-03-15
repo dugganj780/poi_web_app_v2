@@ -187,6 +187,21 @@ const Pois = {
             }
         }
     },
+    deletePoi: {
+        handler: async function (request, h) {
+            try {
+                const id = currentPoi._id;
+                const poi = await Poi.findById(id).populate("user");
+                poi.deleteOne({_id: poi._id}, function(err){
+                    /*if(err) console.log(err);
+                    console.log("Successful deletion");*/
+                });
+                return h.redirect("/report");
+            }catch (err) {
+                return h.view("poiview", { errors: [{ message: err.message }] });
+            }
+        },
+    },
 };
 
 module.exports = Pois;
