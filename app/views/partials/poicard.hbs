@@ -1,0 +1,30 @@
+<div class="uk-card uk-card-default uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+        <dt>Point of Interest</dt>
+        <dd>{{poi.name}}</dd>
+        <dt>Category</dt>
+        <dd>{{poi.category}}</dd>
+        <dt>Latitude</dt>
+        <dd>{{poi.lat}}</dd>
+        <dt>Longitude</dt>
+        <dd>{{poi.long}}</dd>
+        <dt>Description</dt>
+        <dd>{{poi.description}}</dd>
+        <dt>Rating</dt>
+        <dd>{{poi.rating}}</dd>
+        <dt>Weather</dt>
+        <dd>{{weather.weather}}</dd>
+        <dt>Temperature</dt>
+        <dd>{{weather.temp}}</dd>
+        <dt>Upload Image</dt>
+        <dd>{{>addimage}}</dd>
+        {{#if isOwner}}
+            <dd>
+                <div class="uk-button-group">
+                    <button class="uk-button uk-button-secondary" ><a href ="/updatepoi">Edit</a></button>
+                    <button class="uk-button uk-button-secondary"><a href ="/deletepoi">Delete</a></button>
+                </div>
+            </dd>
+        {{/if}}
+    </dl>
+</div>

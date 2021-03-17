@@ -1,74 +1,12 @@
 {{>inner-menu}}
 
 <div class="uk-background-top-left uk-panel uk-padding" style="background-image: url(images/moher.jpg);">
-<div class="uk-child-width-expand@s uk-text-left" uk-grid uk-height-match="target: > div > .uk-card">
-
-    <div>
-        <div class="uk-card uk-card-default uk-card-body">
-            <dl class="uk-description-list uk-description-list-divider">
-                <dt>Point of Interest</dt>
-                <dd>{{poi.name}}</dd>
-                <dt>Category</dt>
-                <dd>{{poi.category}}</dd>
-                <dt>Latitude</dt>
-                <dd>{{poi.lat}}</dd>
-                <dt>Longitude</dt>
-                <dd>{{poi.long}}</dd>
-                <dt>Description</dt>
-                <dd>{{poi.description}}</dd>
-                <dt>Rating</dt>
-                <dd>{{poi.rating}}</dd>
-                <dt>Weather</dt>
-                <dd>{{weather.weather}}</dd>
-                <dt>Temperature</dt>
-                <dd>{{weather.temp}}</dd>
-                <dt>Upload Image</dt>
-                <dd>{{>addimage}}</dd>
-                {{#if isOwner}}
-                <dd>
-                    <div class="uk-button-group">
-                        <button class="uk-button uk-button-secondary" ><a href ="/updatepoi">Edit</a></button>
-                        <button class="uk-button uk-button-secondary"><a href ="/deletepoi">Delete</a></button>
-                    </div>
-                </dd>
-                {{/if}}
-            </dl>
+    <div class="uk-child-width-expand@s uk-text-left" uk-grid uk-height-match="target: > div > .uk-card">
+        <div>
+        {{>poicard}}
+        </div>
+        <div>
+        {{>slideshow}}
         </div>
     </div>
-    <div>
-        <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-            <div class="uk-position-centre uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
-                {{#each slideshow}}
-                <ul class="uk-slideshow-items">
-                    <li>
-                        <img src="{{url}}" alt="">
-                    </li>
-                </ul>
-                {{/each}}
-                <a class="uk-position-left uk-position-large" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-                <a class="uk-position-right uk-position-large" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
-            </div>
-            </div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title uk-text-center">Weather Conditions</h3>
-                <dl class="uk-description-list uk-description-list-divider">
-                    <dt>Weather</dt>
-                    <dd>{{weather.weather}}</dd>
-                    <dt>Temperature</dt>
-                    <dd>{{weather.temp}}</dd>
-                    <dt>Feels Like</dt>
-                    <dd>{{weather.feelTemp}}</dd>
-                    <dt>Wind Speed</dt>
-                    <dd>{{weather.windspeed}}</dd>
-                </dl>
-            </div>
-
-
-
-        </div>
-    </div>
-</div>
-</div>
 </div>
