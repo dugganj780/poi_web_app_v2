@@ -2,6 +2,7 @@
 const Poi = require("../models/poi");
 const User = require("../models/user");
 const ImageStore = require('../models/image-store');
+const Weather = require('../models/weather');
 let currentPoi = undefined;
 
 
@@ -46,9 +47,11 @@ const Pois = {
             const id = request.params._id;
             currentPoi = await Poi.findById(id).populate("user").lean();
             const slideshow = await ImageStore.getPOIImages(id);
+            const weather = await Weather.getWeatherInfo(currentPoi.lat,currentPoi.long)
             console.log(id);
             let isOwner = false;
             console.log(user._id)
+            console.log(weather.weather)
             if (user.isAdmin===true || user._id.toString() === currentPoi.user._id.toString() ){
                 isOwner = true;
             }
@@ -59,6 +62,7 @@ const Pois = {
                 user: user,
                 slideshow: slideshow,
                 isOwner: isOwner,
+                weather: weather,
             });
         },
     },
