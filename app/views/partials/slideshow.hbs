@@ -1,15 +1,15 @@
 <div class="uk-card uk-card-default">
     <div class="uk-card-media-top">
-        <div class="uk-position-centre uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+        <div class="uk-position-center uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
             {{#each slideshow}}
                 <ul class="uk-slideshow-items">
                     <li>
-                        <img src="{{url}}" alt="">
+                        <img src="{{url}}">
                     </li>
                 </ul>
             {{/each}}
-            <a class="uk-position-left uk-position-large" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-            <a class="uk-position-right uk-position-large" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+            <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
         </div>
     </div>
