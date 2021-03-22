@@ -39,7 +39,11 @@
                     {{#each natMons}}
                         <tr>
                             <td>{{name}}</td>
-                            <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{#if user}}
+                                <td> {{user.firstName}} {{user.lastName}} </td>
+                            {{else}}
+                                <td> Unknown User </td>
+                            {{/if}}
                             <td> <button class="uk-button uk-button-secondary"> <a href="/poiview/{{_id}}"> View </a></button> </td>
                         </tr>
                     {{/each}}
