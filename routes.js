@@ -2,6 +2,7 @@
 
 const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/pois");
+const os = require("os");
 
 module.exports = [
     { method: "GET", path: "/", config: Accounts.index },
@@ -34,5 +35,14 @@ module.exports = [
             },
         },
         options: { auth: false },
+    },
+
+    {
+        method: 'GET',
+        path: '/testlb',
+        handler: function (request, h) {
+            return('Server: ' + os.hostname());
+        },
+        config: {auth: false}    // so you don't need to log in first to test it.
     },
 ];

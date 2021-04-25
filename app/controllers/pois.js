@@ -66,18 +66,6 @@ const Pois = {
             });
         },
     },
-    /*report: {
-        handler: async function (request, h) {
-            const id = request.auth.credentials.id;
-            const user = await User.findById(id).lean();
-            const pois = await Poi.find().populate("user").lean();
-            return h.view("report", {
-                title: "Points of Interest",
-                pois: pois,
-                user: user,
-            });
-        },
-    },*/
     report: {
         handler: async function (request, h) {
             const id = request.auth.credentials.id;
@@ -98,17 +86,6 @@ const Pois = {
             });
         },
     },
-    /*userreport: {
-        handler: async function (request, h) {
-            const id = request.auth.credentials.id;
-            const user = await User.findById(id);
-            const userpois = await Poi.find({user: user}, function (err, docs){}).lean();
-            return h.view("home", {
-                title: "Points of Interest",
-                userpois: userpois,
-            });
-        },
-    },*/
     createPoi: {
         handler: async function (request, h) {
             try {
