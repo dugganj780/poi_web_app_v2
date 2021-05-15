@@ -52,7 +52,11 @@ const Pois = {
             let isOwner = false;
             console.log(user._id)
             console.log(weather.weather)
-            if (user.isAdmin===true || user._id.toString() === currentPoi.user._id.toString() ){
+            let originalUser = undefined;
+            if (currentPoi.user!=null){
+                originalUser = currentPoi.user._id.toString();
+            }
+            if (user.isAdmin===true || user._id.toString() === originalUser ){
                 isOwner = true;
             }
             console.log(isOwner)
