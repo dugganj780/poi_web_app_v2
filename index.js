@@ -13,7 +13,8 @@ require('./app/models/db');
 env.config();
 
 const server = Hapi.server({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4000,
+    routes: { cors: true },
 });
 
 const credentials = {
@@ -50,6 +51,7 @@ async function init() {
     });
     server.auth.default('session');
     server.route(require('./routes'));
+    server.route(require('./routes-api'));
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
 }

@@ -1,0 +1,65 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "isAdmin": false
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "isAdmin": false
+    },
+    "james": {
+      "firstName": "James",
+      "lastName": "Duggan",
+      "email": "james.duggan@ucc.ie",
+      "password": "test",
+      "isAdmin": true
+    }
+  },
+  "pois": {
+    "_model": "Poi",
+    "sliabh": {
+      "name": "Sliabh na mBan",
+      "category": "Mountain",
+      "description": "Slievenamon or Slievenaman is a mountain with a height of 721 metres in County Tipperary, Ireland. It rises from a plain that includes the towns of Fethard, Clonmel and Carrick-on-Suir.",
+      "lat": 52.4269,
+      "long": -7.5633,
+      "rating": 5,
+      "user": "->users.james"
+    },
+    "blarney": {
+      "name": "Blarney Castle & Gardens",
+      "category": "National Monument",
+      "description": "Blarney Castle is a medieval stronghold in Blarney, near Cork, Ireland. Though earlier fortifications were built on the same spot, the current keep was built by the MacCarthy of Muskerry dynasty, a cadet branch of the Kings of Desmond, and dates from 1446. The Blarney Stone is among the machicolations of the castle.",
+      "lat": 51.9291,
+      "long": -8.5709,
+      "rating": 4,
+      "user": "->users.james"
+    },
+    "glengarriff": {
+      "name": "Glengarriff Woods Nature Reserve",
+      "category": "Forest",
+      "description": "The entrance to Glengarriff Woods Nature Reserve is located approximately 1km from Glengarriff village, Co. Cork, on the Kenmare Road (N17)",
+      "lat": 51.7564,
+      "long": -9.5645,
+      "rating": 4,
+      "user": "->users.homer"
+    },
+    "garnish": {
+      "name": "Garnish Island",
+      "category": "Island",
+      "description": "Garnish Island, is an island in Glengarriff harbour. It is part of popular tourist attraction Bantry Bay, southwest Ireland. The Office of Public Works uses the name Ilnacullin to differentiate it from Garinish Island in County Kerry.",
+      "lat": 51.7367,
+      "long": -9.5429,
+      "rating": 5,
+      "user": "->users.bart"
+    }
+  }
+}
