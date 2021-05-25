@@ -8,6 +8,8 @@ const Cookie = require("@hapi/cookie");
 const env = require('dotenv');
 const Joi = require("@hapi/joi");
 const ImageStore = require('./app/models/image-store');
+const utils = require("./app/api/utils.js");
+
 require('./app/models/db');
 
 env.config();
@@ -27,6 +29,7 @@ async function init() {
     await server.register(Inert);
     await server.register(Vision);
     await server.register(Cookie);
+    await server.register(require('hapi-auth-jwt2'));
     server.validator(require("@hapi/joi"));
     ImageStore.configure(credentials);
     server.views({
@@ -49,6 +52,12 @@ async function init() {
         },
         redirectTo: '/',
     });
+    server.auth.strategy("jwt", "jwt", {
+        key: "secretpasswordnotrevealedtoanyone",
+        validate: utils.validate,
+        verifyOptions: { algorithms: ["HS256"] },
+    });
+
     server.auth.default('session');
     server.route(require('./routes'));
     server.route(require('./routes-api'));

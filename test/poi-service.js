@@ -12,6 +12,15 @@ class PoiService {
         return response.data;
     }
 
+    async getPoiImages(id) {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/images/" + id);
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+
     async getPoi(id) {
         try {
             const response = await axios.get(this.baseUrl + "/api/pois/" + id);
@@ -88,6 +97,19 @@ class PoiService {
         } catch (e) {
             return null;
         }
+    }
+
+    async authenticate(user) {
+        try {
+            const response = await axios.post(this.baseUrl + "/api/users/authenticate", user);
+            axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+            return response.data;
+        } catch (e) {
+            return null;
+        }
+    }
+    async clearAuth(user) {
+        axios.defaults.headers.common["Authorization"] = "";
     }
 }
 

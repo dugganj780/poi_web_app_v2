@@ -52,6 +52,7 @@ const Pois = {
             let isOwner = false;
             console.log(user._id)
             console.log(weather.weather)
+            console.log(slideshow)
             let originalUser = undefined;
             if (currentPoi.user!=null){
                 originalUser = currentPoi.user._id.toString();

@@ -4,14 +4,18 @@ const Poi = require('../models/poi');
 
 const Pois = {
     find: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             const pois = await Poi.find();
             return pois;
         },
     },
     findOne: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function(request, h) {
             try {
                 const poi = await Poi.findOne({ _id: request.params.id });
@@ -25,7 +29,9 @@ const Pois = {
         },
     },
     create: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             const newPoi = new Poi(request.payload);
             const poi = await newPoi.save();
@@ -37,7 +43,9 @@ const Pois = {
     },
 
     deleteAll: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             await Poi.remove({});
             return { success: true };
@@ -45,7 +53,9 @@ const Pois = {
     },
 
     deleteOne: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             const response = await Poi.deleteOne({ _id: request.params.id });
             if (response.deletedCount==1) {
@@ -56,7 +66,9 @@ const Pois = {
     },
 
     findByUser: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             const pois = await Poi.find({ user: request.params.id });
             return pois;

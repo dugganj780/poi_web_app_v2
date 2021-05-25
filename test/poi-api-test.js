@@ -3,13 +3,26 @@
 const assert = require("chai").assert;
 const PoiService = require("./poi-service");
 const fixtures = require("./fixtures.json");
-const _ = require('lodash');
+const _ = require("lodash");
 
 suite("Candidate API tests", function () {
     let pois = fixtures.pois;
     let newPoi = fixtures.newPoi;
+    let newUser = fixtures.newUser;
 
-    const poiService = new PoiService("http://localhost:3000");
+    suiteSetup(async function () {
+        await poiService.deleteAllUsers();
+        const returnedUser = await poiService.createUser(newUser);
+        const response = await poiService.authenticate(newUser);
+    });
+
+    suiteTeardown(async function () {
+        await poiService.deleteAllUsers();
+        await poiService.clearAuth();
+    })
+
+
+    const poiService = new PoiService("http://localhost:4000");
 
     setup(async function () {
         await poiService.deleteAllPois();

@@ -1,5 +1,6 @@
 const Pois = require('./app/api/pois');
 const Users = require('./app/api/users');
+const Images = require('./app/api/images');
 
 module.exports = [
     { method: "GET", path: "/api/pois", config: Pois.find },
@@ -17,4 +18,5 @@ module.exports = [
 
     { method: "GET", path: "/api/users/{id}/pois", config: Pois.findByUser },
 
+    { method: "GET", path: "/api/images", config: Images.findById },
 ];

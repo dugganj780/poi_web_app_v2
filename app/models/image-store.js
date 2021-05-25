@@ -23,6 +23,7 @@ const ImageStore = {
 
     getPOIImages: async function(id) {
         const result = await cloudinary.v2.api.resources_by_tag(id, function(error, result) {console.log(result, error); });
+        console.log(result.resources);
         return result.resources;
     },
 
