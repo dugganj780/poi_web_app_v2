@@ -19,7 +19,7 @@
       "firstName": "James",
       "lastName": "Duggan",
       "email": "james.duggan@ucc.ie",
-      "password": "test",
+      "password": "$2a$10$M/8qJHEBTV6STFdtwnYG..SYk.zk4BZRhjSx.WQMsoIKRM6xSUNeS",
       "isAdmin": true
     }
   },

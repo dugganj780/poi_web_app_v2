@@ -25,6 +25,7 @@ module.exports = [
     { method: "GET", path: "/updatepoi", config: Pois.showPoiEdit },
     { method: "POST", path: "/updatepoi", config: Pois.updatePoi },
     { method: "GET", path: "/deletepoi", config: Pois.deletePoi },
+    { method: "POST", path: "/addcomment", config: Pois.addComment },
 
     {
         method: "GET",

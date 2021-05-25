@@ -104,13 +104,35 @@ const Pois = {
                     lat: data.lat,
                     long: data.long,
                     rating: data.rating,
-                    user: user._id
+                    user: user._id,
+                    comments: []
                 });
                 await newPoi.save();
                 return h.redirect("/report");
             }catch (err) {
                 return h.view("main", { errors: [{ message: err.message }] });
             }
+        },
+    },
+    addComment: {
+        handler: async function (request, h){
+            const id = request.auth.credentials.id;
+            const user = await User.findById(id).lean();
+            const name = user.firstName + " " + user.lastName;
+            const poiId = currentPoi._id;
+            const poi = await Poi.findById(poiId).populate("user");
+            const text = request.payload;
+            const dateTime = new Date().toLocaleString();
+            const comment = {
+                name: name,
+                text: text,
+                dateTime: dateTime
+            }
+            console.log(comment);
+            poi.comments.push(comment);
+            console.log(poi.comments);
+            await poi.save();
+            return h.redirect("/poiview/"+poiId);
         },
     },
     uploadFile: {
