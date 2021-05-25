@@ -32,7 +32,8 @@ const Users = {
     },
 
     create: {
-        auth: false,        handler: async function (request, h) {
+        auth: false,
+        handler: async function (request, h) {
             const newUser = new User(request.payload);
             const user = await newUser.save();
             if (user) {
