@@ -74,6 +74,26 @@ const Pois = {
             return pois;
         },
     },
+
+    addComment: {
+        auth: {
+            strategy: "jwt",
+        },
+        handler: async function(request, h) {
+            try {
+                const poi = await Poi.findOne({ _id: request.params.id });
+                if (!poi) {
+                    return Boom.notFound("No POI with this id");
+                }
+                const comment = request.payload;
+                poi.comments.push(comment);
+                poi.save();
+                return h.response(poi).code(201);
+            } catch (err) {
+                return Boom.notFound("No POI with this id");
+            }
+        },
+    }
 };
 
 module.exports = Pois;
