@@ -29,9 +29,7 @@ const Pois = {
         },
     },
     create: {
-        auth: {
-            strategy: "jwt",
-        },
+        auth: false,
         handler: async function (request, h) {
             const newPoi = new Poi(request.payload);
             const poi = await newPoi.save();
